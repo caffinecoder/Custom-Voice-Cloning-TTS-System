@@ -1,0 +1,8 @@
+
+raw_audio/
+clean_segments/
+reference_audio/
+.venv/
+__pycache__/
+*.webm
+*.wav 

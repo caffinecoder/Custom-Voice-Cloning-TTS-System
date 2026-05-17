@@ -23,7 +23,7 @@ async def clone_voice(
     language: str = Form (default = "te"),
     consent: bool  = Form(...)  
 ):
-    
+ try:
     if not consent: 
         raise HTTPException(status_code= 400, detail="consent")
     
@@ -50,3 +50,9 @@ async def clone_voice(
     sf.write(output_path, np.array(audio_output, dtype=np.float32), samplerate=24000)
     
     return FileResponse(output_path, media_type="audio/wav", filename="cloned_voice.wav")
+ 
+ except Exception as e:
+        print(f"ERROR: {e}")
+        import traceback
+        traceback.print_exc()
+        raise HTTPException(status_code=500, detail=str(e))

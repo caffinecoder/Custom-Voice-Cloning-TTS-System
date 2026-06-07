@@ -41,7 +41,7 @@ def audio_processing(file_path):
         reduced = nr.reduce_noise (y=audio,sr= sample_rate)
 
         print("split to segments")
-        segment_length = sample_rate*10
+        segment_length = sample_rate*180
         segments =  [reduced[i:i+segment_length]
            for i in range(0, len(reduced), segment_length)]
     
